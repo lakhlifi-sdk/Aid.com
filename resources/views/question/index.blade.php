@@ -8,7 +8,7 @@
 			
 			<table class="table">
 				<tr>
-					<th>Titre</th>
+					<th>Domaine</th>
 					<th>Question</th>
 					<th>auteur</th>
 					<th>Action</th>

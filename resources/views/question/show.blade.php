@@ -139,8 +139,8 @@
 
                         @if($usr)
                         @foreach($usr as $u)
-
-                        <div style="text-align: left;" class="panel panel-default btn btn-warning">
+{{-- users --}}
+                        <a href="{{url('user/'.$u->id.'/showuser')}}"><div style="text-align: left;" class="panel panel-default btn btn-warning">
                             <div style="margin: 1px; padding: 2px; width: 300px;" class="panel-body">
 
                                 <div class="article-heading-abb">
@@ -156,6 +156,7 @@
                                 
                             </div>
                         </div>
+                    </a>
                         @endforeach
                         @endif
 
