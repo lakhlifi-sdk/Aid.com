@@ -90,8 +90,8 @@
                     <div class="panel panel-default">
                 
                         <div class="article-heading-abb">
-                            <img src="{{asset('images/user.png')}}" alt="gomac user" width="30px" height="30px">
-                                        <div class="user-name">{{$q->user->name}}</div>
+                           <a href="{{url('user/'.$q->user->id.'/showuser')}}"> <img class="img-circle img-thumbnail isTooltip" src="@if($q->user->photo){{asset('storage/'.$q->user->photo)}}@else{{asset('images/user.png')}}@endif" alt="gomac user" width="50px" height="500px">
+                                        <div class="user-name">{{$q->user->name}}</div></a>
                                         <div class="comment-post-date">Posted On
                                             <span class="italics">{{$q->created_at}}</span>
                                         </div>
@@ -117,6 +117,12 @@
                             <p class="block-with-text">
                                 {{$q->contenu}}
                             </p>
+                            @if($q->photo)
+
+                            <center><img class="img-thumbnail" src="{{asset('storage/'.$q->photo)}}"></center>
+
+
+                            @endif
                         </div>
                         <div class="article-read-more">
                             <a href="{{url('question/'.$q->id.'/singleArticle')}}" class="btn btn-default btn-wide">Read more...</a>
@@ -144,7 +150,7 @@
                             <div style="margin: 1px; padding: 2px; width: 300px;" class="panel-body">
 
                                 <div class="article-heading-abb">
-                            <img src="{{asset('images/user.png')}}" alt="gomac user" width="20px" height="20px">
+                            <img class="img-circle img-thumbnail isTooltip" src="@if($u->photo){{asset('storage/'.$u->photo)}}@else{{asset('images/user.png')}}@endif" alt="gomac user" width="50px" height="50px">
                                         <div class="user-name"style="margin: 1px; padding: 2px;">{{$u->name}}</div>
                                         <div style="font-size: small;">
                                             <span class="italics"></span>

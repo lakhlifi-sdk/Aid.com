@@ -32,6 +32,9 @@ class QuestionController extends Controller
     	$question->contenu=$req->input('contenu');
 
     	$question->user_id=Auth::user()->id;
+        if($req->hasFile('photo')){
+       $question->photo=$req->photo->store('image');
+      }
     	$question->save();
     	
     	session()->flash('success','votre question a été publier');
@@ -57,7 +60,7 @@ class QuestionController extends Controller
     	//$rep=Reponce::all();
         $usr=User::all();
     	$questions=Question::orderBy('created_at','desc')->get();
-         $count = DB::table('reponces')->count();
+         $count = DB::table('questions','reponce_id')->count();
         
         
     	return view('question/show',['questions'=>$questions,'count'=>$count,'usr'=>$usr]);

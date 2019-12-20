@@ -5,6 +5,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
+
+			<div class="panel panel-default">
+				<div class="panel-body">
+					Mes questions
+				</div>
+				
+			</div>
 			
 			<table class="table">
 				<tr>
@@ -43,7 +50,9 @@
 		</div>
 	</div>
 </div>
-
+<br>
+<br>
+<br>
 
 @include('design.footer')
 @endsection

@@ -26,7 +26,7 @@ Route::delete('delete/{id}','QuestionController@destroy');
 Route::get('show','QuestionController@show')->name('show');
 Route::post('reponce', 'ReponceController@store');
 
-Route::put('user/{id}','UserController@update');
+Route::post('user/{id}','UserController@update');
 
 
 Route::get('question/{id}/singleArticle', 'QuestionController@singleArticle')->name('singlearticle');

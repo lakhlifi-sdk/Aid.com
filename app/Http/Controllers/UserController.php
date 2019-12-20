@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;;
 use App\Reponce;
 use App\Question;
 use Auth;
@@ -18,28 +19,26 @@ class UserController extends Controller
  
    	 public function Update(Request $req,$id){
 
-    	$user=User::find(id);
+    	$user=User::find($id);
 
     	$user->name=$req->input('name');
     	$user->email=$req->input('email');
-        $user->password=$req->input('password');
-    	if($req->hasFile('photo')){
+        /*$user->password=$req->input('password');*/
+    	
+      if($req->hasFile('photo')){
        $user->photo=$req->photo->store('image');
       }
 
-     
-
-    	$user->user_id=Auth::user()->id;
     	$user->save();
 
     	session()->flash('session','bien enregistrer');
     	$questions=Question::all();
     	$rep=Reponce::all();
-
+      $user_id=Auth::user()->id;
         
     	//return view('question/show',['questions'=>$questions,'rep'=>$rep]);
     	
-    	return redirect()->route('singlearticle', array('id' => $req->input('question_id')));
+    	return redirect('user/'.$user_id.'/showuser');
 
 
     }

@@ -83,7 +83,7 @@
                             <li class="dropdown">
 
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <img src="{{asset('images/user.png')}}" alt="gomac user" width="30px" height="30px">
+                                    <img class="img-circle img-thumbnail isTooltip" src="@if(Auth::user()->photo){{asset('storage/'.Auth::user()->photo)}}@else{{asset('images/user.png')}}@endif" alt="gomac user" width="30px" height="30px">
                                     {{ Auth::user()->name }} <span class="avatar-status bg-green"></span><span class="caret"></span>
                                 </a>
 
@@ -93,6 +93,16 @@
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('user/'.Auth::user()->id.'/showuser') }}">
+                                            
+                                            Profil
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

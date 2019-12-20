@@ -14,19 +14,20 @@
 			<div class="panel panel-success">
 				<div class="panel-heading">
 
-					profit
-					 @can('delete',$user) 
-					<a href="{{url('user/'.$user->id.'/edit')}}" class="btn btn-default pull-right">Edite</a>
-					 @endcan 
-					   <a href="" class="btn btn-primary pull-right" onclick="window.print()">Imprimer</a> 
-				</div>	
+					Profil
+					 @if($user->id===Auth::user()->id)
+					<a href="{{url('user/'.$user->id.'/edit')}}" class="btn btn-default pull-right">Edite</a>@endif
+					  
+					 <a href="" onclick="window.print()" class="btn btn-default pull-right">Print</a>
+
+				</div>
 					<div class="panel-body">
 						<div class="container bootstrap snippet">
 	
 <div class="panel-body inf-content">
     <div class="row">
         <div class="col-md-4">
-            <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="{{asset('images/user.png')}}" data-original-title="Usuario"> 
+            <img alt="" style="width:600px;" title="" class="img-circle img-thumbnail isTooltip" src="@if($user->photo){{asset('storage/'.$user->photo)}}@else{{asset('images/user.png')}}@endif" data-original-title="Usuario"> 
             <ul title="Ratings" class="list-inline ratings text-center">
                 <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
@@ -118,40 +119,48 @@
                              {{$user->email}} 
                         </td>
                     </tr>
-                  
-                    <tr>        
+
+                    
+                    <tr> 
+                       @if($date)   
                         <td>
                             <strong>
-                                <span class="glyphicon glyphicon-calendar text-primary"></span>
-                                Created                                                
+                                <span class="glyphicon glyphicon-calendar text-primary"></span> 
+                                created                                                
                             </strong>
                         </td>
-                        @if($date)
                         <td class="text-primary">
-                             {{$date}}
-                        </td>
+                             {{$date}} 
+                        </td> 
                         @endif
                     </tr>
-                    @if($user->city)
-                    <tr>        
+
+                   @if($user->city)
+                    <tr> 
+                          
                         <td>
                             <strong>
-                                <span class="glyphicon glyphicon-calendar text-primary"></span>
-                                City                                              
+                                <span class="glyphicon glyphicon-calendar text-primary"></span> 
+                                city                                                
                             </strong>
                         </td>
-                    </tr>
-                    @endif
-                    @if($date)
-                    <tr>
-                        
-                        
                         <td class="text-primary">
-                             {{$user->city}}
-                        </td>
+                             {{$user->city}} 
+                        </td> 
                        
-                    </tr> 
-                      @endif                                         
+                    </tr>
+
+                      @endif  
+
+                      <tr>        
+                        <td>
+                            
+                        </td>
+                         <td >
+                            
+                         </td>
+                    </tr>
+                                       
                 </tbody>
             </table>
             </div>

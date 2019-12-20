@@ -41,8 +41,8 @@
         {{csrf_field()}}                           
                     <div class="panel panel-default">
                         <div class="comments-user">
-                                        <img src="{{asset('images/user.png')}}" alt="gomac user" width="30px" height="30px">
-                                        <div class="user-name">{{$question->user->name}}</div>
+                                        <a href="{{url('user/'.$question->user->id.'/showuser')}}"><img class="img-circle img-thumbnail isTooltip" src="@if($question->user->photo){{asset('storage/'.$question->user->photo)}}@else{{asset('images/user.png')}}@endif" alt="gomac user" width="30px" height="30px">
+                                        <div class="user-name">{{$question->user->name}}</div></a>
                                         <div class="comment-post-date">Posted On
                                             <span class="italics" style="font-size: small;">{{$newDateFormat}}</span>
                                         </div>
@@ -68,7 +68,13 @@
                             </div>
                             <div class="article-content">
                                
-                                   <p>{{$question->contenu}}</p>                     
+                                   <p>{{$question->contenu}}</p>
+                                   @if($question->photo)
+
+                            <center><img class="img-thumbnail" src="{{asset('storage/'.$question->photo)}}"></center>
+
+
+                            @endif                     
                             </div>
                                            
                              </div>
@@ -79,8 +85,8 @@
                     <div class="article-content">
                                 <div class="article-comment-top">
                                     <div class="comments-user">
-                                        <img src="{{asset('images/user.png')}}" alt="gomac user">
-                                        <div class="user-name">{{$r->user->name}}</div>
+                                      <a href="{{url('user/'.$r->user->id.'/showuser')}}">  <img src="@if($r->user->photo){{asset('storage/'.$r->user->photo)}}@else{{asset('images/user.png')}}@endif" alt="gomac user">
+                                        <div class="user-name">{{$r->user->name}}</div></a>
                                         <div class="comment-post-date">Reply On
                                             <span class="italics">{{$r->created_at}}</span>
                                         </div>
