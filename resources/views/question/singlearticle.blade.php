@@ -12,7 +12,7 @@
         
     </div>
     
-    <div class="container featured-area-default padding-30">
+    <div id="comment" class="container featured-area-default padding-30">
         <div class="row">
             <div class="col-md-8 padding-20">
                 <div class="row">
@@ -37,7 +37,7 @@
                         </ol>
                     </div>
 
-    <form  class="form" method="POST" action="{{url('reponce')}}">
+    <form id="comment" class="form" method="POST" action="{{url('reponce')}}">
         {{csrf_field()}}                           
                     <div class="panel panel-default">
                         <div class="comments-user">
@@ -55,15 +55,15 @@
                             <div class="article-info">
                                 <div class="art-date">
                                     <a href="#">
-                                        <i class="fa fa-calendar-o"></i> {{$question->created_at}}</a>
+                                        <i class="fa fa-calendar-o"></i> {{$newDateFormat}}</a>
                                 </div>
                                 <div class="art-category">
                                     <a href="#">
-                                        <i class="fa fa-folder"></i> Account Settings </a>
+                                        <i class="fa fa-folder"></i> Settings </a>
                                 </div>
                                 <div class="art-comments">
                                     <a href="#">
-                                        <i class="fa fa-comments"></i> {{$count}}</a>
+                                        <i class="fa fa-comments"></i> 2 345{{-- {{$count}} --}}</a>
                                 </div>
                             </div>
                             <div class="article-content">
@@ -95,6 +95,7 @@
                                         <p>
                                             
                                     {{$r->contenu}}
+                                    @{{newrep}}
                                            
 
                                         </p>
@@ -112,7 +113,7 @@
                             <label for="email" class="col-md-2 control-label">Reply</label>
 
                             <div class="col-md-9">
-                                <textarea id="email" type="" class="form-control" name="reponce" value="{{ old('reponce') }}" required></textarea>
+                                <textarea v-model="@{{newrep}}" id="email" type="" class="form-control" name="reponce"  required></textarea>
 
                                 @if ($errors->has('reponce'))
                                     <span class="help-block">
@@ -143,11 +144,27 @@
 </div>
  @include('design.menubody')
  </div>
- </div>   
+ </div> 
+
+
+ 
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <!-- FOOTER -->
     @include('design.footer')
+    @section('javas')
+    <script type="text/javascript">
+        
+        new vue({
+        el:'#comment'
+        data:{
+        newrep:''
+
+        }
+     });
+    </script>
+
+    @endsection
  @endisset
 @endsection

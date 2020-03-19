@@ -9,6 +9,7 @@ use Auth;
 use App\User;
 use DB;
 
+
 class QuestionController extends Controller
 {
      public function __construct()

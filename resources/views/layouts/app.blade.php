@@ -127,6 +127,7 @@
    
 
         @yield('content')
+
         
     </div>
 
@@ -139,6 +140,8 @@
     <script src="{{ asset('js/jquery-2.2.4.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/npm.js') }}"></script>
+    <script src="{{asset('js/vue.js')}}"></script>
+     @yield('javas')
 
 
     
